@@ -1,0 +1,27 @@
+Steps taken [In Linux]:
+	1. Removed "std::" and used "using namespace std;" instead
+	2. Installed libsdl2-dev thru terminal:
+			apt-get install libsdl2-dev
+	3. Wrote a Makefile for easier terminal command (See Makefile)
+	4. Added "#include <SDL.h>"
+	5. Added "-lSDL2" in the LIBRARY_LINKS of my Makefile 
+	6. Included the path where my SDL2 is intalled in: "-I/usr/include/SDL2" (See Makefile)
+	7. Errors not due to SDL2 library:
+		-‘nullptr’ was not declared in this scope
+			Solution:
+				nullptr is a C++11 keyword. So in order to access it with the g++ compiler, I have to add -std=c++11 in my terminal command. (See Makefile)
+		-‘roundedBoxColor’ was not declared in this scope
+			Solution:
+				Downloaded SDL2_gfx library and followed the instructions from:
+					http://cms.ferzkopp.net/index.php/software/13-sdl-gfx
+				Added "#include "SDL2_gfxPrimitives.h"
+				Added -lSDL2_gfx in the LIBRARY_LINKS of my Makefile (See Makefile)
+				Added the path where my SDL2_gfx header files are located: -I/usr/local/include/SDL2 (See Makefile)
+		-‘tex’ was not declared in this scope
+			Solution:
+				Commented out due to undeclared tex texture.
+References:
+	nullptr problem:
+		http://stackoverflow.com/questions/10033373/c-error-nullptr-was-not-declared-in-this-scope-in-eclipse-ide
+	Basics of gcc
+	http://www.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html

@@ -1,16 +1,18 @@
+#include <iostream>
+#include <SDL.h>
+#include "SDL2_gfxPrimitives.h"
 
-//http://wiki.libsdl.org/APIByCategory
-
+using namespace std; 
 int main() {
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
-		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+		cout << "SDL_Init Error: " << SDL_GetError() << endl;
 		return 1;
 	}
 
 	SDL_Window *win = SDL_CreateWindow("Run this", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
 	if (win == nullptr){
-		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+		cout << "SDL_CreateWindow Error: " << SDL_GetError() << endl;
 		SDL_Quit();
 		return 1;
 	}
@@ -18,7 +20,7 @@ int main() {
 	SDL_Renderer *ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (ren == nullptr){
 		SDL_DestroyWindow(win);
-		std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+		cout << "SDL_CreateRenderer Error: " << SDL_GetError() << endl;
 		SDL_Quit();
 		return 1;
 	}
@@ -38,7 +40,7 @@ int main() {
 		SDL_Delay(2000);
 	}
 
-	SDL_DestroyTexture(tex);
+	//SDL_DestroyTexture(tex);
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
 	SDL_Quit();
